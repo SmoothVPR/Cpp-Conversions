@@ -1,4 +1,4 @@
-# Assignment 2
+# Datetime API
 
 ### Date-Time API Questions
 Q: <b>Which class would you use to store your birthday in years, months, days, seconds, and nanoseconds?</b>  
@@ -23,9 +23,9 @@ ZonoedDateTime datetime = ZonedDateTime.ofInstant(Instant.now(), ZoneId.systemDe
 </code>
        
 ### Date-Time API Functions
-- [x] Write an example that, for a given year, reports the length of each month within that year.
-- [x] Write an example that, for a given month of the current year, lists all of the Mondays in that month.
-- [x] Write an example that tests whether a given date occurs on Friday the 13th.
+- [ ] Write an example that, for a given year, reports the length of each month within that year.
+- [ ] Write an example that, for a given month of the current year, lists all of the Mondays in that month.
+- [ ] Write an example that tests whether a given date occurs on Friday the 13th.
 
 ### Make Tests & Run
 ```
@@ -34,6 +34,6 @@ make tests
 
 ### Build & Run (Linux)
 ```
-make     # requires java jdk 8+
-./run.sh
+make
+./bin/datetime
 ```

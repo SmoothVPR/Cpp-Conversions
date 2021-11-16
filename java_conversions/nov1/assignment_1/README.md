@@ -1,4 +1,4 @@
-# Assignment 1
+# Text Formatting Challenge
 
 Write a Java program that prints out the following patterns using loops:
 ```
@@ -31,5 +31,5 @@ Write a Java program that prints out the following patterns using loops:
 ### Build & Run
 ```
 make
-./assignment_1
+./bin/formatting
 ```

@@ -25,7 +25,7 @@
 - [ ] <a href="./nov5/assignment_2">Assignment 2: Datetime API</a>
 
 ### Week 1 (November 2021)
-- [ ] <a href="./week1/assignment_1">Assignment 1: More Lambdas</a>
+- [ ] <a href="./week1/assignment_1">Assignment 1: Number Lambdas</a>
 - [ ] <a href="./week1/assignment_2">Assignment 2: Functional Programming</a>
 - [ ] <a href="./week1/assignment_3">Assignment 3: More Functional Programming</a>
 - [ ] <a href="./week1/assignment_4">Assignment 4: Even More Functional Programming...</a>

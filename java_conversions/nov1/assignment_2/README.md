@@ -1,4 +1,4 @@
-# Assignment 2
+# Guessing Game
 
 - [x] User is asked to guess a number 1-100. (Program chooses randomly.)
 - [x] If the guess is within 10 of the correct answer, plus or minus, output the correct  
@@ -10,5 +10,5 @@
 ### Build & run (Linux)
 ```
 make
-./bin/a-numbers-game
+./bin/its-a-numbers-game
 ```

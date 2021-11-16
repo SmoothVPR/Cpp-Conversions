@@ -1,9 +1,10 @@
-# Assignment 1
+# Two Thread Deadlocking
 
-- [x] Write a program to create a deadlock between two threads.
+### Original Prompt:
+- [ ] Write a program to create a deadlock between two threads.
 
 ### Build & run (Linux)
 ```
-make     # requires java jdk 8+
-./run.sh
+make
+./bin/deadlock
 ```

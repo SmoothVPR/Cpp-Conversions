@@ -1,6 +1,6 @@
-# Assignment 6
+# Fix and Implement Singleton
 
-### Lambdas
+### Original Prompt:
 - [ ] Fix the below Singleton class:
 <code>
 import java.math.BigDecimal;
@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 
 public static class SampleSingleton {
     private static Connection conn = null;
@@ -27,6 +26,6 @@ make tests
 
 ### Build & Run (Linux)
 ```
-make     # requires java jdk 8+
-./run.sh
+make
+./bin/sqldb
 ```
