@@ -1,0 +1,19 @@
+# Config
+.gitconfig
+
+# Compiled folders
+bin
+build
+
+# Java files
+*.java
+
+# Compiled files
+*.class
+*.exe
+*.jar
+*.obj
+*.o
+
+# Misc
+compile_flags.txt
