@@ -1,15 +1,13 @@
 #include <iostream>
-#include <fstream>
-#include <string>
 #include <cmath>
 #include <ctime>
 
 class Game
 {
   private:
-  int targetValue;
-  int userInput;
-  int lives;
+    int targetValue;
+    int userInput;
+    int lives;
 
   public:
     Game(void)
@@ -20,15 +18,15 @@ class Game
       this->userInput = -1;
       this->lives = 5;
 
-      //this.s = new Scanner(System.in);
-
       std::cout << "Welcome to SmoothVPR's Guessing Game!\n"
-                   "\nThe rules are as follows:\n"
+                   "\n"
+                   "The rules are as follows:\n"
                    "- You must guess and enter a number between 1 and 100\n"
                    "- If the guess is NOT within 10 (+ or -) units of the correct answer,\n"
                    "  the game will continue\n"
                    "- You have 5 lives at the start of the game and every wrong guess costs\n"
-                   "  you a life\n";
+                   "  you a life\n"
+                   "\n";
     }
 
     inline void start()
@@ -46,7 +44,8 @@ class Game
     inline void getNextUserInput()
     {
       std::string responses[6] = { "Nope", "Nah", "Wrong", "No", "Not quite" };
-      int random_idx = (int)(rand() % 6);
+      size_t size = 6;
+      int random_idx = rand() % size;
 
       std::string response = responses[random_idx];
       std::cout << "\n" << response << ".\n";
@@ -59,7 +58,7 @@ class Game
 
     inline void playGame()
     {
-      while (!(this->userInput > targetValue - 10 && this->userInput < targetValue + 10))
+      while (!(this->userInput > this->targetValue - 10 && this->userInput < this->targetValue + 10))
       {
         // play the game
         this->lives--;
@@ -79,12 +78,12 @@ class Game
     inline void defeat()
     {
       std::cout << "\nSorry, You lost!\n";
-      std::cout << "The number was: " << targetValue << "\n";
+      std::cout << "The number was: " << this->targetValue << "\n";
     }
 
     inline void victory()
     {
       std::cout << "\nVictory!\n";
-      std::cout << "The number was: " << targetValue << "\n";
+      std::cout << "The number was: " << this->targetValue << "\n";
     }
 };
