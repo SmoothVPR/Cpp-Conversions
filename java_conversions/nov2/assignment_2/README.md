@@ -1,9 +1,9 @@
-# Assignment 2
+# Matrix Search
 
 Construct a 2D array and find the max number and show its position in the array.
 
 ### Build & run (Linux)
 ```
-make     # requires java jdk 8+
-./run.sh
+make
+./bin/matrix-search
 ```
