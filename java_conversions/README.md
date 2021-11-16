@@ -6,8 +6,8 @@
 
 ### November 2, 2021
 - [x] <a href="./nov2/assignment_1">Assignment 1: Command Line Interface</a>
-- [ ] <a href="./nov2/assignment_2">Assignment 2: 2D Array Handler</a>
-- [ ] <a href="./nov2/assignment_3">Assignment 3: Shape Interface</a>
+- [x] <a href="./nov2/assignment_2">Assignment 2: 2D Array Handler</a>
+- [x] <a href="./nov2/assignment_3">Assignment 3: Shape Interface</a>
 
 ### November 3, 2021
 - [x] <a href="./nov3/assignment_1">Assignment 1: Directory Walker</a>

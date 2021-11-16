@@ -1,36 +1,34 @@
-PROJECT  = assignment_3
+PROJECT  = shapes
 
-JC       = javac
-JAR      = jar
-JFLAGS   =
-JARFLAGS = cvfm
+CC       = g++
+CFLAGS   = -std=c++2a -O2 -g -pedantic -Wall -Wextra -Werror
+LD       = g++
+LDFLAGS  =
 
-PACKAGE  = com/ss
-MANIFEST = manifest.txt
-
-SRC      = src/$(PACKAGE)
+BIN      = bin
+SRC      = src
 OBJ      = build
-SOURCES  = $(wildcard $(SRC)/*.java)
-OBJECTS  = $(patsubst $(SRC)/%.java, $(OBJ)/$(PACKAGE)/%.class, $(SOURCES))
+BUILD    = $(OBJ)
+SOURCES  = $(wildcard $(SRC)/*.cpp)
+OBJECTS  = $(patsubst $(SRC)/%.cpp, $(OBJ)/%.obj, $(SOURCES))
+
+INCLUDE  = include
+INCLUDES = $(addprefix -I,$(INCLUDE))
 
 all: $(PROJECT)
 
-$(PROJECT): $(OBJECTS) $(MANIFEST)
-	$(JAR) $(JARFLAGS) $(PROJECT).jar $(MANIFEST) $(OBJECTS) 
+$(PROJECT): $(BIN) $(BUILD) $(OBJECTS) 
+	$(LD) $(OBJECTS) $(LDFLAGS) -o $(BIN)/$(PROJECT)
 
-$(OBJECTS): $(OBJ)
-	$(JC) $(JFLAGS) $(SOURCES) -d $(OBJ)
+$(OBJECTS): $(OBJ)/%.obj : $(SRC)/%.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c $^ -o $@
 
-$(MANIFEST):
-	@echo "Manifest-Version: 1.0"    > manifest.txt
-	@echo "Class-Path: build/"      >> manifest.txt
-	@echo "Main-Class: com.ss.Main" >> manifest.txt
-	@echo ""                        >> manifest.txt
+$(BIN):
+	mkdir -p $@
 
-$(OBJ):
+$(BUILD):
 	mkdir -p $@
 
 clean:
-	rm -f $(OBJECTS)
-	rm -f $(MANIFEST)
-	rm -f $(PROJECT).jar
+	rm -fr $(BIN)/$(PROJECT)
+	rm -fr $(OBJ)/*

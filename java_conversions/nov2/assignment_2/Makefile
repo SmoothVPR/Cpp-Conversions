@@ -1,4 +1,4 @@
-PROJECT = array-search
+PROJECT = matrix-search
 
 CC      = g++
 CFLAGS  = -std=c++2a -g -pedantic -Wall -Wextra -Werror
