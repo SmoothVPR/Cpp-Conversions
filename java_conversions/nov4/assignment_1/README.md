@@ -1,9 +1,10 @@
-# Assignment 1
+# Singleton
 
+Original Prompt:
 - [x] Implement a Singleton with double checked locking.
 
 ### Build & run (Linux)
 ```
-make     # requires java jdk 8+
-./run.sh
+make
+./bin/singleton
 ```
