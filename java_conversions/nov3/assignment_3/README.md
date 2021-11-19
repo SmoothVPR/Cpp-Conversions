@@ -8,5 +8,5 @@ The character can be specified at the command line.
 ### Build & run (Linux)
 ```
 make
-./bin/findc path/to/file.txt "character string"
+./bin/find-char path/to/file.txt x 
 ```

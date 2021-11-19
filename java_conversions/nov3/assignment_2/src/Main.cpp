@@ -1,47 +1,48 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 
-void getInputAndAppend(const char* input, const char* target);
+bool getInputAndAppend(std::fstream& fs);
 
-int main(int argc, char* argv[]) 
-{
+int main(int argc, char* argv[]) {
   // Handle command line arguments
-  if (argc != 2) { return -1; }
+  if (argc != 2) {
+    std::cerr << "Error. No file provided.\n";
+    return -1;
+  }
 
+  // Handle variable
   const char* file_path = argv[1];
 
-  // Open file and begin prompt
-  //File target = new File(input);
-  //try
-  //{
-      // getInputAndAppend(input, target);
-  //}
-  //catch (IOException e)
-  //{
-      // IOExecption
-  //}
-  //catch (Exception e)
-  //{
-      // Unknown exception
-  //}
+  // Create fstream object
+  std::fstream fs;
+  fs.open(file_path, std::ios_base::app);
+  if (!fs.is_open()) {
+    std::cerr << "Error. Failed to open '" << file_path << "'.\n";
+    return -1;
+  }
+
+  // Main function
+  std::cout << "Enter the text you want to append to '" << file_path << "'.\n"
+            << "(press ctrl + d to exit)\n\n";
+  while (getInputAndAppend(fs) != false)
+  {
+    // Accept text until you user exits
+  }
+
+  return 0;
 }
 
-/*
- *void getInputAndAppend(const char* input, const char* target)
- *{
- *  if (!target.exists())
- *  {
- *      System.err.println("File '" + input + "' not found.");
- *      System.exit(1);
- *  }
- *
- *  System.out.println("Enter the text you would like to append to the file '" + input + "': \n");
- *  Scanner s = new Scanner(System.in);
- *  String textToAppend = s.nextLine();
- *  s.close();
- *
- *  FileWriter fw = new FileWriter(target, true);
- *  fw.write(textToAppend);
- *  fw.close();
- *}
- */
+bool getInputAndAppend(std::fstream& fs) {
+  std::string input;
+
+  // Get user input
+  std::cout << ": ";
+  if (std::getline(std::cin, input))
+  {
+    fs << input << "\n";
+    return true;
+  }
+
+  return false;
+}

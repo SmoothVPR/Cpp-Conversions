@@ -11,8 +11,8 @@
 
 ### November 3, 2021
 - [x] <a href="./nov3/assignment_1">Assignment 1: Directory Walker</a>
-- [ ] <a href="./nov3/assignment_2">Assignment 2: File Appending App</a>
-- [ ] <a href="./nov3/assignment_3">Assignment 3: Character counter</a>
+- [x] <a href="./nov3/assignment_2">Assignment 2: File Appending App</a>
+- [x] <a href="./nov3/assignment_3">Assignment 3: Character counter</a>
 
 ### November 4, 2021
 - [ ] <a href="./nov4/assignment_1">Assignment 1: Singleton Double Check</a>

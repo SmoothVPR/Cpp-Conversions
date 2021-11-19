@@ -1,0 +1,7 @@
+# Folders
+bin
+build
+
+# Files
+*.o
+*.obj

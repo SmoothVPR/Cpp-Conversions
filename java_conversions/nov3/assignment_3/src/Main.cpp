@@ -1,84 +1,49 @@
-#include <unordered_map>
+#include <iterator>
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
-#include <string>
 
-void printUsageError();
+void displayCharacterCount(const char*, char);
+void __usage_error(const char*);
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
     // Handle command line arguments
-    if (argc != 3)
-    {
-        printUsageError();
-        exit(1);
+    if (argc != 3) {
+        __usage_error(argv[0]);
     }
-    //String input = args[0];
-    //String chars = args[1];
 
-    // Open file and begin counting chars
-    //File target = new File(input);
-    try
-    {
-        getCharacterCount(input, chars, target);
-    }
-    catch (int e)
-    {
-        // IOExecption
-    }
-    catch (...)
-    {
-        // Unknown exception
-    }
+    const char* file = argv[1];
+    char const c = argv[2][0];
+
+    displayCharacterCount(file, c);
+
+    return 0;
 }
 
-void printUsageError()
-{
-  std::cerr << "Usage: ./run_sh <path/to/text.txt> <character string>\n"
+void displayCharacterCount(const char* file, char c) {
+  int count = 0;
+
+  std::fstream fs;
+  fs.open(file, std::ios::in);
+
+  if (fs.is_open()) {
+    char temp;
+    while ((fs.get(temp), fs.eof()) == false) {
+      if (temp == c) {
+        count++;
+      }
+    }
+  }
+
+  std::cout << "The number of " << c << "'s is " << count << ".\n";
+}
+
+void __usage_error(const char* exe) {
+  std::cerr << "Usage: " << exe << " <path/to/text> <character>\n"
                "\n"
                "positional arguments:\n"
-               "  path/to/text.txt, \"character string\"\n"
+               "  path/to/text, \"character\"\n"
                "\n"
                "example:\n"
-               "  ./run_sh test.txt abcdefg\n";
+               "  " << exe << " test.txt g\n";
+  exit(1);
 }
-
-//void getCharacterCount(std::string input, std::string chars, std::fstream target)
-//{
-    //if (!target.exists())
-    //{
-        //System.err.println("File '" + input + "' not found.");
-        //System.exit(1);
-    //}
-
-    //HashMap<Character, Integer> charMap = new HashMap<Character, Integer>();
-
-    //char[] charArray = chars.toCharArray();
-    //for (char c : charArray)
-    //{
-        //charMap.putIfAbsent(c, 0);
-    //}
-
-    //System.out.println("Finding each char of '" + chars + "' in file '" + target + "'...");
-    //Scanner s = new Scanner(target);
-    //while (s.hasNextLine())
-    //{
-        //String line = s.nextLine();
-        //for (char c : line.toCharArray())
-        //{
-            //System.out.print(c);
-            //if (charMap.containsKey(c))
-            //{
-                //charMap.put(c, charMap.get(c) + 1);
-            //}
-        //}
-    //}
-    //s.close();
-
-    //System.out.println("");
-    //for (HashMap.Entry<Character, Integer> entry : charMap.entrySet())
-    //{
-        //System.out.println(entry);
-    //}
-//}

@@ -1,36 +1,36 @@
-PROJECT  = assignment_3
+PROJECT  = find-char
 
-JC       = javac
-JAR      = jar
-JFLAGS   =
-JARFLAGS = cvfm
+CMAKE    = /bin/cmake
+CMAKE_FLAGS =
 
-PACKAGE  = com/ss/assn/three
-MANIFEST = manifest.txt
+BIN      = bin
+BUILD    = build
 
-SRC      = src/$(PACKAGE)
-OBJ      = build
-SOURCES  = $(wildcard $(SRC)/*.java)
-OBJECTS  = $(patsubst $(SRC)/%.java, $(OBJ)/$(PACKAGE)/%.class, $(SOURCES))
+SRC      = src
+OBJ      = $(BUILD)/CMakeFiles/$(PROJECT).dir/$(SRC)
+SOURCES  = $(wildcard $(SRC)/*.cpp)
+OBJECTS  = $(patsubst $(SRC)/%.cpp,$(OBJ)/%.cpp.o,$(SOURCES))
+
+INCLUDE  = include
+INCLUDES = $(addprefix -I,$(INCLUDE))
 
 all: $(PROJECT)
 
-$(PROJECT): $(OBJECTS) $(MANIFEST)
-	$(JAR) $(JARFLAGS) $(PROJECT).jar $(MANIFEST) $(OBJECTS) 
+$(PROJECT): $(BIN) $(BUILD) $(OBJECTS)
+	mv $(BUILD)/$(PROJECT) $(BIN)/$(PROJECT)
 
 $(OBJECTS): $(OBJ)
-	$(JC) $(JFLAGS) $(SOURCES) -d $(OBJ)
-
-$(MANIFEST):
-	@echo "Manifest-Version: 1.0"                     > manifest.txt
-	@echo "Class-Path: build/"                       >> manifest.txt
-	@echo "Main-Class:$(subst /,., $(PACKAGE)).Main" >> manifest.txt
-	@echo ""                                         >> manifest.txt
+	$(CMAKE) --build $(BUILD)
 
 $(OBJ):
+	$(CMAKE) . $(CMAKE_FLAGS) -B $(BUILD)
+
+$(BIN):
+	mkdir -p $@
+
+$(BUILD):
 	mkdir -p $@
 
 clean:
-	rm -f $(OBJECTS)
-	rm -f $(MANIFEST)
-	rm -f $(PROJECT).jar
+	rm -fr $(BIN)/$(PROJECT)
+	rm -fr $(BUILD)/*

@@ -1,10 +1,10 @@
-# Append
+# Append user input
 
 ### Original prompt:
 Write a Java program that appends text to an existing file.
 
-### Build & run (Linux)
+### Build & run (WSL2 using cmake)
 ```
 make
-./bin/append path/to/file.txt
+./bin/file-appending-app test.txt
 ```
