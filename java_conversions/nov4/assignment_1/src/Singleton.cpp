@@ -1,39 +1,36 @@
-package com.ss.assn.one;
+#include "Singleton.hpp"
 
-public class Singleton implements Runnable
+Singleton* Singleton::instance_ = nullptr;
+std::mutex Singleton::mutex_;
+
+/**
+ * Static methods should be defined outside the class.
+ */
+Singleton* Singleton::GetInstance(const std::string& value)
 {
-    private static Singleton single_instance = null;
- 
-    // Private constructor emphasizes Singleton nature
-    private Singleton()
-    {
-        System.out.println("New Singleton created.");
+    /**
+     * This is a safer way to create an instance. instance = new Singleton is
+     * dangeruous in case two instance threads wants to access at the same time
+     */
+    std::lock_guard<std::mutex> lock(mutex_);
+    if (instance_ == nullptr) {
+        instance_ = new Singleton(value);
     }
- 
-    public static Singleton getInstance()
-    {
-        // First check
-        if (single_instance == null)
-        {
-            synchronized (Singleton.class)
-            {
-                // Second check
-                if (single_instance == null)
-                {
-                    single_instance = new Singleton();
-                }
-            }
-        }
- 
-        return single_instance;
-    }
+    return instance_;
+}
 
-    @Override
-    public void run()
-    {
-        while (true)
-        {
-            // Do nothing
-        }
-    }
+void singleton::ThreadFoo()
+{
+    // Following code emulates slow initialization.
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    Singleton* singleton = Singleton::GetInstance("FOO");
+    std::cout << singleton->value() << "\n";
+}
+
+void singleton::ThreadBar()
+{
+    // Following code emulates slow initialization.
+    std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    Singleton* singleton = Singleton::GetInstance("BAR");
+    std::cout << singleton->value() << "\n";
 }

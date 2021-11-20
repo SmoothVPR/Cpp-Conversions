@@ -1,29 +1,19 @@
-package com.ss.assn.one;
+#include "Singleton.hpp"
+#include <iostream>
 
-/**
- * Author:   Malik R Booker
- * Created:  November 3, 2021
- * Modified: November 4, 2021
- *
- * Brief:
- *   Instantiates a set of Singleton instances { a, b, c }
- *   then prints their hash code to stdout
-**/
+using singleton::ThreadFoo;
+using singleton::ThreadBar;
 
-import java.lang.Thread;
-
-public class Main
+int main()
 {
-    public static void main(String[] args)
-    {
-        // Instantiating Singleton classes
-        Singleton s1 = Singleton.getInstance();
-        Singleton s2 = Singleton.getInstance();
- 
-        s1.run();
-        s2.run();
-
-        System.out.println("First thread hash code: "  + s1.hashCode());
-        System.out.println("Second thread hash code: " + s2.hashCode());
-    }
+    // Instantiating Singleton classes
+    std::thread s1(ThreadFoo);
+    std::thread s2(ThreadBar);
+  
+    // Joining threads
+    s1.join();
+    s2.join();
+  
+    std::cout << "First thread hash code: "  << std::hex << &s1 << std::endl;
+    std::cout << "Second thread hash code: " << std::hex << &s2 << std::endl;
 }
