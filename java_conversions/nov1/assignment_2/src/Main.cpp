@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
-int main(void)
+int main()
 {
-  Game* game = new Game();
-  game->start();
+    Game* game = new Game();
+    game->start();
 }

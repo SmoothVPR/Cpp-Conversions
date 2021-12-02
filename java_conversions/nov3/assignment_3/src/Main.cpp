@@ -20,30 +20,28 @@ int main(int argc, char* argv[]) {
 }
 
 void displayCharacterCount(const char* file, char c) {
-  int count = 0;
-
-  std::fstream fs;
-  fs.open(file, std::ios::in);
-
-  if (fs.is_open()) {
-    char temp;
-    while ((fs.get(temp), fs.eof()) == false) {
-      if (temp == c) {
-        count++;
-      }
+    int count = 0;
+  
+    std::fstream fs;
+    fs.open(file, std::ios::in);
+  
+    if (fs.is_open()) {
+        char temp;
+        while ((fs.get(temp), fs.eof()) == false) {
+            (void)(temp == c ? count++ : 0);
+        }
     }
-  }
-
-  std::cout << "The number of " << c << "'s is " << count << ".\n";
+  
+    std::cout << "The number of " << c << "'s is " << count << ".\n";
 }
 
 void __usage_error(const char* exe) {
-  std::cerr << "Usage: " << exe << " <path/to/text> <character>\n"
-               "\n"
-               "positional arguments:\n"
-               "  path/to/text, \"character\"\n"
-               "\n"
-               "example:\n"
-               "  " << exe << " test.txt g\n";
-  exit(1);
+    std::cerr << "Usage: " << exe << " <path/to/text> <character>\n"
+                 "\n"
+                 "positional arguments:\n"
+                 "  path/to/text, \"character\"\n"
+                 "\n"
+                 "example:\n"
+                 "  " << exe << " test.txt g\n";
+    exit(1);
 }

@@ -1,7 +1,7 @@
 # Singleton
 
 Original Prompt:
-- [ ] Implement a Singleton with double checked locking.
+- [x] Implement a Singleton with double checked locking.
 
 ### Build & run (Linux)
 ```

@@ -4,8 +4,7 @@
 using singleton::ThreadFoo;
 using singleton::ThreadBar;
 
-int main()
-{
+int main() {
     // Instantiating Singleton classes
     std::thread s1(ThreadFoo);
     std::thread s2(ThreadBar);
